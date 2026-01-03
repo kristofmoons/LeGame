@@ -3,24 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Runner - Infinite Side Scroller</title>
 </head>
-
 <body>
+    <!-- Rotate screen prompt for portrait mode -->
+    <div id="rotate-screen">
+        <div class="rotate-icon">📱</div>
+        <h2>Please Rotate Your Device</h2>
+        <p>This game is best played in landscape mode</p>
+    </div>
 
-    <h1>Le game</h1>
-    <canvas></canvas>
-    <h3>Use the keyboard to manage your character.</h3>
-    <p>
-    <br /> <b>ARROWS:</b>
-    <br /> UP to jump
-    <br /> LEFT & RIGHT to move forward or backward
-    </p>
+    <!-- Democracy explosion overlay -->
+    <div id="democracy-overlay">
+        <h1>🦅 DEMOCRACY! 🦅</h1>
+    </div>
 
-    <script src = "game.js" type = "text/javascript"></script>
+    <!-- Boss UI overlay -->
+    <div id="boss-ui">
+        <div class="boss-warning">⚠️ BOSS ATTACK ⚠️</div>
+        <div class="boss-timer-container">
+            <span class="boss-timer-label">TIME LEFT:</span>
+            <span id="boss-timer">15</span>s
+        </div>
+        <div class="boss-hint">Collect a 💣 and touch the boss!</div>
+    </div>
 
-  </body>
+    <div class="game-container">
+        <div class="ui-overlay">
+            <div class="score-display">
+                <span id="score">0</span>
+            </div>
+            <div id="powerup-display" class="powerup-display">
+                💣 500KG
+            </div>
+            <div class="high-score-display">
+                Best: <span id="high-score">0</span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="start-screen" class="screen">
+            <h1>🏃 Runner</h1>
+            <p class="instructions">
+                <strong>PC:</strong> SPACE/UP to jump, DOWN to duck<br>
+                <strong>Mobile:</strong> Tap top to jump, tap bottom to duck
+            </p>
+            <button id="start-btn" class="game-btn">START GAME</button>
+            <p class="high-score-text">High Score: <span id="menu-high-score">0</span></p>
+        </div>
+        
+        <div id="game-over-screen" class="screen hidden">
+            <h1>Game Over!</h1>
+            <p class="final-score">Score: <span id="final-score">0</span></p>
+            <p class="new-record hidden" id="new-record">🎉 New Record!</p>
+            <button id="restart-btn" class="game-btn">PLAY AGAIN</button>
+        </div>
+    </div>
 
+    <script src="game.js" type="text/javascript"></script>
+</body>
 </html>
